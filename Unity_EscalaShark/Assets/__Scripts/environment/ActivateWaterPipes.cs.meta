@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: d6ca316af70d31e4d9d18b41aebaa377
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - WaterSprayer: {fileID: 7046731511456667208, guid: f2670f00dfe38d4418291149d13dfa7c, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
