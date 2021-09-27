@@ -11,6 +11,7 @@ public class ActivateWaterPipes : MonoBehaviour
     [Header("Look movements")]
     public float PosY;
     public float PosYWater;
+    public bool isActivate;  
 
     private float TimesIntantiate = 1;
 
@@ -27,6 +28,7 @@ public class ActivateWaterPipes : MonoBehaviour
      
         if (PosY < (WaterRiseLevel.PosWaterY - DistanceWaterToPipes))
         {
+            isActivate = true;
             Invoke("InstantiateWater", 0f);
         }
     }
