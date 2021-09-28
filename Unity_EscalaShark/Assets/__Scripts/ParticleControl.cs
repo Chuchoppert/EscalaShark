@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class ParticleControl : MonoBehaviour
 {
-    private float duration, interval, durationCounter, IntervalCounter;
+    public float duration, interval;
+    private float durationCounter, IntervalCounter;
     public ParticleSystem Water;
 
     private void Start()
     {
-        duration = Random.Range(.5f,3f);
-        interval = Random.Range(1f, 10f);
+        //duration = Random.Range(.5f,3f);
+        interval = Random.Range(3f, 12f);
     }
 
     private void Update()
     {
-        Debug.Log("duration:" + duration);
+        //Debug.Log("duration:" + duration);
         Debug.Log("Interval:" + interval);
 
         IntervalCounter += Time.deltaTime;
@@ -24,14 +25,14 @@ public class ParticleControl : MonoBehaviour
         {
             Water.Play();
             durationCounter += Time.deltaTime;
-            if (durationCounter >= duration)
-            {
+            //if (durationCounter >= duration)
+            //{
                 Water.Stop();
-                duration = Random.Range(.5f, 3f);
+                //duration = Random.Range(.5f, 3f);
                 interval = Random.Range(1f, 10f);
-                durationCounter = 0;
+                //durationCounter = 0;
                 IntervalCounter = 0;
-            }
+            //}
         }
 
     }
