@@ -17,7 +17,7 @@ public class ParticleControl : MonoBehaviour
     private void Update()
     {
         //Debug.Log("duration:" + duration);
-        Debug.Log("Interval:" + interval);
+        //Debug.Log("Interval:" + interval);
 
         IntervalCounter += Time.deltaTime;
         

@@ -6,10 +6,13 @@ public class Balancing : MonoBehaviour
 {
     [Header("Set basics for Movements")]
     public Vector3 SetGravity;
-    public float speed = 6f;
+    public float Grabspeed = 150f;
+    public float Normalspeed = 50f;
     public float ImpulseBeforeGrab = 10f;
-    private  Vector3 setPivotWhenisGrabbing;
     public GameObject Canvas;
+    public float InitiaImpulse = 6f;
+    private  Vector3 setPivotWhenisGrabbing;
+    private float speed = 6f;
 
     [Header("Look the movements")]
     public Vector3 PivotGrabbingWorld;
@@ -25,11 +28,13 @@ public class Balancing : MonoBehaviour
    
     // Start is called before the first frame update
     void Start()
-    {
+    {      
         Physics.gravity = SetGravity;
         rb = GetComponent<Rigidbody>();
         isGrabbing = false;
         ActivateLaunch = false;
+
+        rb.AddForce(Vector3.up * InitiaImpulse, ForceMode.Impulse);
     }
 
     // Update is called once per frame
@@ -71,9 +76,10 @@ public class Balancing : MonoBehaviour
                 //rb.velocity = ForceBeforeGrab;
                 //Direccion * magnitud 
                 if (ActivateLaunch == true)
-                {
+                {                   
                     rb.AddForce(SumVecDireccion * ImpulseBeforeGrab, ForceMode.Impulse);
-                    ActivateLaunch = false;
+                    Debug.Log("GO!");
+                    //ActivateLaunch = false;
                 }
             }
             GrabPipeTransform = other.gameObject.transform;
@@ -97,6 +103,7 @@ public class Balancing : MonoBehaviour
         if (isGrabbing == true)
         {
             transform.position = new Vector3(GrabPipeTransform.position.x, GrabPipeTransform.position.y, transform.position.z);
+            speed = Grabspeed; 
 
             rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
             rb.centerOfMass = GameObject.FindGameObjectWithTag("SnapGrab").transform.localPosition;            
@@ -104,15 +111,16 @@ public class Balancing : MonoBehaviour
         else if (isGrabbing == false)
         {
             transform.position = transform.position;
+            speed = Normalspeed;
 
             rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
             rb.centerOfMass = GameObject.FindGameObjectWithTag("SnapNatural").transform.localPosition;
+            ActivateLaunch = false;
         }      
     }
 
-    private void OnDisable()
+    /*private void OnDisable()
     {
         Canvas.gameObject.SetActive(true);
-    }
+    }*/
 }
-

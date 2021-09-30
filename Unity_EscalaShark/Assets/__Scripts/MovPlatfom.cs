@@ -5,17 +5,27 @@ using UnityEngine;
 public class MovPlatfom : MonoBehaviour
 {
     public float AmountPerTimer;
-
+    public float MaxLeft;
+    public float MaxRight;
+    private float SignAmount;
     // Update is called once per frame
+    private void Start()
+    {
+        SignAmount = AmountPerTimer;
+    }
     void Update()
     {
-        if (transform.localPosition.x <= 89.9)
+        if (transform.localPosition.x >= MaxLeft)
         {
-            transform.localPosition = new Vector3(transform.localPosition.x + (Time.deltaTime * AmountPerTimer), transform.localPosition.y, transform.localPosition.z);
+            //Debug.Log("-");
+            SignAmount = -AmountPerTimer;
         }
-        else if(transform.localPosition.x >= 118)
+        else if(transform.localPosition.x <= MaxRight)
         {
-            transform.localPosition = new Vector3(transform.localPosition.x - (Time.deltaTime * AmountPerTimer), transform.localPosition.y, transform.localPosition.z);
+            //Debug.Log("+");
+            SignAmount = AmountPerTimer;
         }
+
+        transform.Translate(new Vector3((Time.deltaTime * SignAmount), 0, 0), Space.Self);
     }
 }
