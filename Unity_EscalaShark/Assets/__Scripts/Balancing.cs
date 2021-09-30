@@ -6,13 +6,18 @@ public class Balancing : MonoBehaviour
 {
     [Header("Set basics for Movements")]
     public Vector3 SetGravity;
+    public float InitiaImpulse = 6f;
     public float Grabspeed = 150f;
     public float Normalspeed = 50f;
     public float ImpulseBeforeGrab = 10f;
-    public GameObject Canvas;
-    public float InitiaImpulse = 6f;
+    public GameObject GameoverScreen;
+
+
+
     private  Vector3 setPivotWhenisGrabbing;
     private float speed = 6f;
+    public Animator CH_Shark_Anim;
+
 
     [Header("Look the movements")]
     public Vector3 PivotGrabbingWorld;
@@ -28,7 +33,8 @@ public class Balancing : MonoBehaviour
    
     // Start is called before the first frame update
     void Start()
-    {      
+    {
+        CH_Shark_Anim = GetComponentInChildren<Animator>();
         Physics.gravity = SetGravity;
         rb = GetComponent<Rigidbody>();
         isGrabbing = false;
@@ -68,6 +74,7 @@ public class Balancing : MonoBehaviour
             {
                 isGrabbing = true;
                 ActivateLaunch = true;
+                CH_Shark_Anim.SetFloat("Launch", 0);
             }
             else
             {
@@ -76,10 +83,10 @@ public class Balancing : MonoBehaviour
                 //rb.velocity = ForceBeforeGrab;
                 //Direccion * magnitud 
                 if (ActivateLaunch == true)
-                {                   
+                {
+                    CH_Shark_Anim.SetFloat("Launch", 1);
                     rb.AddForce(SumVecDireccion * ImpulseBeforeGrab, ForceMode.Impulse);
-                    Debug.Log("GO!");
-                    //ActivateLaunch = false;
+                    Debug.Log("GO!");                  
                 }
             }
             GrabPipeTransform = other.gameObject.transform;
@@ -102,6 +109,7 @@ public class Balancing : MonoBehaviour
     {
         if (isGrabbing == true)
         {
+            CH_Shark_Anim.SetFloat("Grab", 1);
             transform.position = new Vector3(GrabPipeTransform.position.x, GrabPipeTransform.position.y, transform.position.z);
             speed = Grabspeed; 
 
@@ -110,6 +118,9 @@ public class Balancing : MonoBehaviour
         }            
         else if (isGrabbing == false)
         {
+            
+            CH_Shark_Anim.SetFloat("Grab", 0);
+
             transform.position = transform.position;
             speed = Normalspeed;
 
@@ -119,8 +130,8 @@ public class Balancing : MonoBehaviour
         }      
     }
 
-    /*private void OnDisable()
+    private void OnDisable()
     {
-        Canvas.gameObject.SetActive(true);
-    }*/
+        GameoverScreen.gameObject.SetActive(true);
+    }
 }
