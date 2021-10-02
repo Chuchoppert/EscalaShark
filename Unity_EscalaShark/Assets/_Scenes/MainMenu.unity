@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -485,7 +485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7783019, g: 0.9515764, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -545,7 +545,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 85}
-  m_SizeDelta: {x: 1028.8289, y: 257.2072}
+  m_SizeDelta: {x: 1162.4778, y: 290.6194}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &358031135
 MonoBehaviour:
@@ -567,10 +567,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Coming Soon
+  m_text: 'Hold "space" to stay with a bite in the tube
 
 
-    Thanks for playing'
+    move with "A" and "D"
+
+    Look
+    up with "W"'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d248fb97d970df48828efeccb51e0b7, type: 2}
   m_sharedMaterial: {fileID: -5664854684142260294, guid: 3d248fb97d970df48828efeccb51e0b7, type: 2}
@@ -597,7 +600,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 74.75
+  m_fontSize: 50.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -820,7 +823,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Options
+  m_text: Controls
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d248fb97d970df48828efeccb51e0b7, type: 2}
   m_sharedMaterial: {fileID: -5664854684142260294, guid: 3d248fb97d970df48828efeccb51e0b7, type: 2}
@@ -1080,7 +1083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.0047169924, g: 1, b: 0.95801914, a: 0.392}
+  m_Color: {r: 0.378471, g: 0.4245283, b: 0.4225337, a: 0.392}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1693,7 +1696,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1538830170
 Light:
   m_ObjectHideFlags: 0
