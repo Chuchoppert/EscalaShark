@@ -315,7 +315,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -748,8 +748,8 @@ MonoBehaviour:
     Look
     up with "W"'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3d248fb97d970df48828efeccb51e0b7, type: 2}
-  m_sharedMaterial: {fileID: -5664854684142260294, guid: 3d248fb97d970df48828efeccb51e0b7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 78d36ad6c4887d14cb9e28ec48ce3acf, type: 2}
+  m_sharedMaterial: {fileID: 2846558297280804721, guid: 78d36ad6c4887d14cb9e28ec48ce3acf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -773,7 +773,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50.6
+  m_fontSize: 56.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1447,15 +1447,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3d248fb97d970df48828efeccb51e0b7, type: 2}
-  m_sharedMaterial: {fileID: -5664854684142260294, guid: 3d248fb97d970df48828efeccb51e0b7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 78d36ad6c4887d14cb9e28ec48ce3acf, type: 2}
+  m_sharedMaterial: {fileID: 2846558297280804721, guid: 78d36ad6c4887d14cb9e28ec48ce3acf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1472,7 +1472,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 97.65
+  m_fontSize: 108.15
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
