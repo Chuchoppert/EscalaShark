@@ -10,13 +10,13 @@ public class Balancing : MonoBehaviour
     public float Grabspeed = 150f;
     public float Normalspeed = 50f;
     public float ImpulseBeforeGrab = 10f;
+    public GameObject CH_Shark_Anim;
+
+
+    [Header("Set basics for IU")]
     public GameObject GameoverScreen;
-
-
-
-    private  Vector3 setPivotWhenisGrabbing;
-    private float speed = 6f;
-    public Animator CH_Shark_Anim;
+    public AudioSource SoundPlayer;
+    public AudioClip[] SoundsShark;
 
 
     [Header("Look the movements")]
@@ -25,16 +25,22 @@ public class Balancing : MonoBehaviour
     public Vector3 SumVecDireccion;
     public bool isGrabbing;
     public bool ActivateLaunch;
+    public bool onetimemusic;
+    public float isOccur;
+
 
     private Rigidbody rb;
     private float HorizMovement;
     private Transform GrabPipeTransform; //pos para linkear el shark al pipe
-    
-   
+    private Vector3 setPivotWhenisGrabbing;
+    private float speed = 6f;
+    private Animator AnimationCH;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        CH_Shark_Anim = GetComponentInChildren<Animator>();
+        AnimationCH = CH_Shark_Anim.GetComponent<Animator>();
         Physics.gravity = SetGravity;
         rb = GetComponent<Rigidbody>();
         isGrabbing = false;
@@ -74,7 +80,7 @@ public class Balancing : MonoBehaviour
             {
                 isGrabbing = true;
                 ActivateLaunch = true;
-                CH_Shark_Anim.SetFloat("Launch", 0);
+                OneTimeSound(0);
             }
             else
             {
@@ -84,7 +90,10 @@ public class Balancing : MonoBehaviour
                 //Direccion * magnitud 
                 if (ActivateLaunch == true)
                 {
-                    CH_Shark_Anim.SetFloat("Launch", 1);
+                    onetimemusic = false;
+                    SoundPlayer.Stop();
+                    AnimationCH.SetBool("Launch", true);
+
                     rb.AddForce(SumVecDireccion * ImpulseBeforeGrab, ForceMode.Impulse);
                     Debug.Log("GO!");                  
                 }
@@ -109,18 +118,22 @@ public class Balancing : MonoBehaviour
     {
         if (isGrabbing == true)
         {
-            CH_Shark_Anim.SetFloat("Grab", 1);
+            AnimationCH.SetBool("Launch", false);
+            AnimationCH.SetBool("Grab", true);
+            OneTimeSound(1);
+
+
             transform.position = new Vector3(GrabPipeTransform.position.x, GrabPipeTransform.position.y, transform.position.z);
             speed = Grabspeed; 
 
             rb.constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
-            rb.centerOfMass = GameObject.FindGameObjectWithTag("SnapGrab").transform.localPosition;            
+            rb.centerOfMass = GameObject.FindGameObjectWithTag("SnapGrab").transform.localPosition;
+            
         }            
         else if (isGrabbing == false)
         {
-            
-            CH_Shark_Anim.SetFloat("Grab", 0);
 
+            AnimationCH.SetBool("Grab", false);
             transform.position = transform.position;
             speed = Normalspeed;
 
@@ -133,5 +146,30 @@ public class Balancing : MonoBehaviour
     private void OnDisable()
     {
         GameoverScreen.gameObject.SetActive(true);
+    }
+
+    private void OneTimeSound(float Whathappen)
+    {
+        isOccur = Whathappen;
+
+        if (onetimemusic == false)
+        {
+            if (isOccur == 0)
+            {
+
+                SoundPlayer.clip = SoundsShark[0];
+                SoundPlayer.PlayOneShot(SoundPlayer.clip);
+
+                isOccur = 1;
+            }
+            else if (isOccur == 1)
+            {
+                SoundPlayer.clip = SoundsShark[1];
+                SoundPlayer.PlayOneShot(SoundPlayer.clip);
+
+                isOccur = 2;
+            }
+        }
+       
     }
 }

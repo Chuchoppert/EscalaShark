@@ -9,9 +9,11 @@ public class WaterRiseLevel : MonoBehaviour
     [Header("Set Basic for water")]
     public float timeToStar;
     public float Speed;
+    public AudioSource DeathAudio;
 
     [Header("Look movements")]
     public bool isActivate;
+
 
     // Start is called before the first frame update
 
@@ -38,6 +40,7 @@ public class WaterRiseLevel : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            DeathAudio.Play();
             other.gameObject.SetActive(false);
         }
     }
